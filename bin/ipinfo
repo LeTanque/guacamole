@@ -1,0 +1,29 @@
+#!/bin/bash
+# Simple Ip info
+# curl ipinfo.io/geo &
+#curl ipinfo.io && wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test.zip &
+# if (( ${#IFACESW[@]} > 0 )); then
+#     IFWMATCHES=${IFACESW[@]}
+#     IFACESWMATCHES="($IFACESWMATCHES|(${IFWMATCHES// /|}))"
+# fi
+#ip link | sed -n 's/'eth[0-9]','inet'/&/p'
+
+# BANNER #################################################
+printf "\n"
+printf "ip INFO \n" | toilet -SkF metal -f slant
+# RFKILL #################################################
+printf " ➜ List any blocked interfaces with 'rfkill list all' \n"
+rfkill list all &
+printf " ➜ Unblock 'unblock all' \n"
+rfkill unblock all &
+# IFCONFIG IWCONFIG IP LINK ######################################
+printf " ➜ configuration \n" &
+ip link | sed -n 's/ eth[0-9]*..../&/p'
+ifconfig | sed -n 's/inet addr/&/p'
+printf " \n"
+printf " ➜ curl IP, hostname, and country \n"
+
+
+curl ipinfo.io/ip && curl ipinfo.io/hostname && curl ipinfo.io/country 
+
+exit $?

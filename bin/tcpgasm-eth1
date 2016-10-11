@@ -1,0 +1,17 @@
+#!/bin/bash
+# tcpgasm  |  display the flow of packets of a network device in the terminal 
+##for real-time monitoring
+# USAGE: you will need to adjust the interface below as needed. tun0 is a common 
+##open VPN interface. hiphophacker
+# OPTIONS: Visit the man page for more info. -a, all post processing. -d, debug
+##level. Default is 1. -J colors. -i interface. 
+
+DEV="-i eth1"
+A="a"	#all the toppings
+J="J"	#color
+C="c" 	#console
+S="s"	#strip non-printable
+printf "tcpgasm \n" | toilet -SkF metal -f slant
+printf "tcpflow -$A$J$C$S $DEV"
+printf "\n"
+sudo tcpflow -$A$J$C$S $DEV

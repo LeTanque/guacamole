@@ -1,0 +1,89 @@
+#!/bin/bash
+# kismonman
+# simple kismet launcher
+# kismet configuration is handled in the kismet.conf file. All this script
+# does is prepares the wireless device launch kismet.
+
+# definitions
+DEV="wlan0"
+HOME="/home/tank"
+SU="sudo -v"
+MAC="52:54:00:f7:97:5a"
+MACKY="macchanger"
+SHOWMAC="macchanger -s"
+#OPTION="-m $MAC"
+OPTION="-r"
+$SU
+printf "kismonman" | toilet -tf slant -F 180 --gay
+printf "\n ➜ simple kismet launcher \n\n"
+#
+## mackychan - random mac address
+#
+printf "mackychan\n"
+printf ". \n"
+sudo rfkill unblock all
+
+printf "\n ➜ stop and start network services \n\n"
+sudo service network-manager stop
+sudo service networking stop
+sleep 1
+sudo service network-manager start
+sudo service networking start
+printf ".. " && sleep 0.5 && printf ". \n" && sleep 1
+
+sudo ifconfig $DEV down
+printf ". \n"
+sudo $MACKY $OPTION $DEV
+printf ". \n" && sleep 1
+printf "\n ➜ stop and start network services, again \n\n"
+sudo service network-manager stop
+sudo service networking stop
+sleep 1
+sudo service network-manager start
+sudo service networking start
+printf ". \n" && sleep 1
+
+printf "\n ➜ unblock + up \n"
+printf ".. " && sleep 0.5 && printf ". \n" && sleep 1
+ip link | sed -n 's/..:..:..:..:..:../&/ip'
+printf "... \n"
+printf "rfkill list all. "
+rfkill list all
+printf "Now let's unblock stuff "
+sudo rfkill unblock all
+printf "..... \n"
+printf "\n ➜ bring $DEV up \n" && sleep 0.5
+sudo ifconfig $DEV up
+rfkill list all  |  grep "yes"
+#
+## airmon
+#
+printf "airmon killing floor, then mon0\n"
+sleep 0.5 && printf ". \n" && sleep 1
+sudo airmon-ng stop mon0
+sudo airmon-ng stop mon1
+sudo airmon-ng check kill
+sudo airmon-ng start $DEV
+#
+## kismet
+#
+sleep 1 && printf "\n ➜ start kismet \n" && sleep 2
+# cd $HOME/etc/kismet-2016-07-R1
+# prefix=$HOME/etc/kismet-2016-07-R1
+
+prefix=/usr/local
+exec_prefix=${prefix}
+ETC=${prefix}/etc
+BIN=${exec_prefix}/bin
+
+oargs=$*
+
+until test -z "$1"; do
+        if test "$1" = "--help" -o "$1" = "-h"; then
+                exec ${BIN}/kismet_server --help
+        fi
+
+        shift
+done
+
+exec ${BIN}/kismet_client -c mon0 $client $oargs

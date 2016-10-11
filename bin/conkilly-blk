@@ -1,0 +1,15 @@
+#! /bin/bash
+## Kills conky in it's tracks, and reloads the right conky.
+## USAGE: summon conkill, sit back, relax, enjoy the digideath!
+CONKY="conky"
+KILLER="killall -SIGKILL $CONKY"
+LSMODMATCHES="(wmi|(dell|ideapad)[-_]laptop)"
+MODMATCHES="(air|ar5|at7|ath[^3]?|b43|bcma|brcm|carl|ipw|iwl|ndis|r(818|8192[eu]|871|92su)|rt[23567]|rtl|ssb|wl|(cfg|mac)80211)"
+LSMOD=$(lsmod | egrep "(^|[[:punct:] ])($MODMATCHES|$LSMODMATCHES)[^[:punct:] ]*([[:punct:] ]|$)")
+
+printf "conKilly" | toilet -f slant -F gay
+printf "➜ kill conky \n "
+$KILLER
+printf "➜ launch default conky config \n "
+sleep 1 
+conkystart-blk

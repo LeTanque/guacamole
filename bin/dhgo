@@ -1,0 +1,13 @@
+#!/bin/bash
+DEV="eth0"
+
+printf "dhclient $DEV \n"
+sleep 1
+printf "Useful for enabling an ethernet connection using terminal only, \n"
+sleep 1
+printf "like if the GUI isn't working for some reason or NetworkManager is slacking. \n\n"
+sudo rfkill unblock $DEV
+sleep 1 && printf "\n"
+sudo dhclient eth0 
+ifconfig $DEV
+exit $?

@@ -1,0 +1,68 @@
+#!/bin/bash
+# arpoon - arp-scan with default configuration, configured around the goal of 
+## identifying more machines
+# USAGE - command & release
+
+#########
+# Definitions
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
+export LC_ALL="en_US.UTF-8"
+# Interface
+IFACE="eth0"
+IFACEMATCHES="(wlan[0-9]|eth[0-9]|tun[0-9])"
+# arp-scan command
+ARPOON="sudo arp-scan -lI $IFACE"
+#########
+MODMATCHES="(air|ar5|at7|ath[^3]?|b43|bcma|brcm|carl|ipw|iwl|ndis|r(818|8192[eu]|871|92su)|rt[23567]|rtl|ssb|wl|(cfg|mac)80211)"
+DEC2BI=({0..1}{0..1}{0..1}{0..1}{0..1}{0..1}{0..1}{0..1})
+DEC2HEX=($(printf "%02x " {0..255}))
+
+# If Then Else statements
+if [ -t 0 ]; then
+    SUDO="sudo"
+elif [ -x /usr/bin/pkexec ]; then
+    SUDO="pkexec"
+elif [ -x /usr/bin/gksudo ]; then
+    SUDO="gksudo"
+    GKSUDO="yes"
+fi
+
+# Execution
+# Optional Organizational Headers #################################
+printf "arpOOn" | toilet -SkF metal -f slant
+printf "\n"
+printf " ➜ ip & iw"
+printf "\n"
+ifconfig $IFACE
+iwconfig $IFACE
+$IWCONFIG
+sed '/^lo /,/^$/d' <<< "$IWCONFIG"
+IFACESW=($(sed -n 's/^\([^ ]\+\)[ ]\+Link encap:Ethernet.*/\1/p' <<< "$IWCONFIG"))
+$IFACESW
+printf "\n\n"
+printf " ➜ arp-scan on $IFACE"
+printf "\n"
+sleep 1 && echo "$LSMOD" && $ARPOON
+printf "\n\n"
+printf " ➜ done"
+printf "\n"
+
+
+# IFCONFIG IWCONFIG ######################################
+
+
+
+
+
+IWCONFIG=$(iwconfig)
+sed '/^lo /,/^$/d' <<< "$IWCONFIG"
+IFCONFIG=$(ifconfig -a)
+sed '/^lo /,/^$/d' <<< "$IFCONFIG"
+IFACESETH=($(sed -n 's/^\([^ ]\+\)[ ]\+Link encap:Ethernet.*/\1/p' <<< "$IFCONFIG"))
+if (( ${#IFACESETH[@]} > 0 )); then
+    IFETHMATCHES=${IFACESETH[@]}
+    IFACEMATCHES="($IFACEMATCHES|(${IFETHMATCHES// /|}))"
+fi
+
+exit $?

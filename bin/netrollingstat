@@ -1,0 +1,16 @@
+#!/bin/bash
+# Netrollingstat - netstat extended information on tcp & udp 
+# connections displayed in continuously. Parsed with grep inversely 
+# with the term 'unix' to strip away internal connections (needs 
+# research).
+
+printf "    netrollingstat" | figlet -sf digital
+printf "\n ➜  netstat as a real-time continuous connection monitor \n\n"
+sleep 1
+printf "\n ➜  "
+netstat --ip -i
+printf "\n ➜  "
+netstat -We --ip
+sleep 3
+printf "\n ➜  "
+netstat -Wec --ip

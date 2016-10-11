@@ -1,0 +1,7 @@
+#!/bin/bash
+HOME="/home/tank"
+printf "   ukopp" | figlet
+printf "supreme" | toilet -kF gay
+printf " ➜ launch ukopp with jobfile from $HOME/.ukopp" 
+printf "\n"
+sleep 2 && sudo ukopp -job $HOME/.ukopp/jobfile 

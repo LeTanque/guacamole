@@ -1,0 +1,8 @@
+#!/bin/sh
+printf "lightDM" | figlet -c
+#!/bin/sh
+xrandr --output DVI-0 --primary --mode 1440x900
+
+printf "xrandr" | figlet -c
+xrandr --output DVI-0 --primary --mode 1440x900
+

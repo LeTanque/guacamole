@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sh -c '"/home/tank/etc/tor-browser/Browser/start-tor-browser" --detach || ([ !  -x "/home/tank/etc/tor-browser/Browser/start-tor-browser" ] && "$(dirname "$*")"/Browser/start-tor-browser --detach)' dummy %k  
+sleep 4 && armed
+exit $?
+

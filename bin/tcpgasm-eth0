@@ -1,0 +1,15 @@
+#!/bin/sh
+# tcpgasm  |  display the flow of packets of a network device in the terminal 
+##for real-time monitoring
+# USAGE: you will need to adjust the interface below as needed. tun0 is a common 
+##open VPN interface. hiphophacker
+# OPTIONS: Visit the man page for more info. -a, all post processing. -d, debug
+##level. Default is 1. -J colors. -i interface. 
+
+# Commetted out alternative commands and optional notification 
+#notify-send "drip drip drop there goes a netgasm" &
+#gnome-terminal --window-with-profile=IPINFO-HOLD -e "pkexec tcpflow -i wlan0 -J -c -s" &
+#gnome-terminal --window-with-profile=IPINFO-HOLD -e "pkexec tcpflow -i eth0 -J -c -s" &
+#gnome-terminal --window-with-profile=holdme -e "sudo tcpflow -Jcsi eth0"
+sudo tcpflow -aJcsi eth0
+exit $?
