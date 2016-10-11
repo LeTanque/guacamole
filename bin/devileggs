@@ -1,1 +1,23 @@
-/home/tank/bin/devileggs
+#!/bin/bash
+# devileggs - devilspie launch script (if you wanna call it a "script")
+# USAGE - It really don't do shit, so you just enter the command and go jack off or something.
+#  devilspie2 [OPTION...] - apply rules on windows
+#  -h, --help              Show help options
+#  -d, --debug             Print debug info to stdout
+#  -e, --emulate           Don't apply any rules, only emulate execution
+#  -f, --folder=FOLDER     Search for scripts in this folder
+#  -v, --version           Show Devilspie2 version and quit
+HOME="/home/tank"
+FOLDER="-f $HOME/.devilspie2 "
+DEBUG="-d -f $HOME/.devilspie2/debug "
+
+printf "devileggs" | toilet -SkF metal -f slant
+printf "devilspie2 running devilish.lua \n\n"
+sleep 1
+devilspie2 $FOLDER
+#devilspie2 $DEBUG
+#devilspie2 $FOLDER $DEBUG
+# sleep 1
+# printf "\nKilling devilspie2 in 2 seconds\n"
+# sleep 1
+# killall devilspie2

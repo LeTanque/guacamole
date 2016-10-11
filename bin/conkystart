@@ -1,1 +1,15 @@
-/home/tank/bin/conkystart
+#!/bin/bash
+# Simple universal conky launch
+# conkystart version 2.0.2
+# As long as computer specific conky script is placed in user's bin folder, 
+# and the name starts with the default 'conkyrc', this script will launch
+# it. Opposed to writing a device specific variants of all conky scripts, 
+# this script allows for fewer variants and a more stable backup system.
+#HOME="/home/tank"
+# Launch time
+printf "conkystart" | figlet -c
+sleep 0.5
+printf "\n...\n"
+sleep 0.5
+conky -c $HOME/bin/conkyrc-T333*
+

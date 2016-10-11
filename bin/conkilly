@@ -1,1 +1,11 @@
-/home/tank/bin/conkilly
+#!/bin/bash
+# Conkilly
+# v 2.0.3
+printf "conKilly" | figlet -c
+printf "\nkilling conky daily\n\n"
+killall -SIGKILL conky
+killall conky
+sleep 1
+printf "waiting 3 seconds then launching conky again\n"
+sleep 1 && printf "." &&  sleep 1 && printf "." &&  sleep 1 && printf ".\n"
+conkystart

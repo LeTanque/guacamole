@@ -1,1 +1,10 @@
-/home/tank/bin/conkystart-blk
+#!/bin/sh
+## Replace user if applicable
+USER="tank"
+HOME="/home/$USER"
+HOME_BIN="/home/$USER/bin"
+
+## Start conky
+sleep 1 && conky -c $HOME_BIN/conkyrc-blk
+
+exit $?
