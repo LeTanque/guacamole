@@ -1,6 +1,0 @@
-#!/bin/bash
-HOME="/home/tank"
-
-printf "cryptocat" | toilet -tkf slant --gay
-cd $HOME/etc/Cryptocat-linux-x64
-./Cryptocat
