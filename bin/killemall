@@ -1,33 +1,36 @@
 #!/bin/bash
-# kill commonly running programs 
-printf "kill em all" | figlet -k
+# kill commonly running programs
+printf "kill em all" | figlet -tcf smblock
 sudo -v
 printf "\n 	WARNING WARNING WARNING \n"
-printf " ➜ Script will attempt to shutdown the machine following \n" 
+printf " ➜ Script will attempt to shutdown the machine following \n"
 printf "   the graceful exit of commonly used programs \n"
 sleep 0.5
 printf " ➜ kill mullvad \n"
-sleep 1
+sleep 0.5
 sudo killall mullvad
+sleep 0.2
 sudo killall mtunnel
+sleep 0.2
 sudo killall openvpn
 printf " ➜ kill nemo \n"
-sleep 1
-killall nemo 
+sleep 0.4
+killall nemo
 printf " ➜ kill tor & firefox \n"
-sleep 1
+sleep 0.4
 killall tor
+sleep 0.2
 killall firefox
 printf " ➜ kill keepassx & keepass2 lock then exit \n"
-sleep 1
+sleep 0.5
 killall keepassx
 keepass2 --lock-all
 keepass2 --exit-all
 printf " ➜ truecrypt dismount \n"
-sleep 1
-truecrypt -d 
-sleep 1
+sleep 0.5
+truecrypt -d
+sleep 0.5
 killall truecrypt
-printf " ➜ shutdown in 5 seconds \n"
-sleep 5
+printf " ➜ shutdown in 3 seconds \n"
+sleep 3
 sudo shutdown -h now

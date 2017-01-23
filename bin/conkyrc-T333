@@ -34,8 +34,8 @@ own_window_transparent true
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 own_window_argb_visual true
 own_window_argb_value 255
-gap_x 5
-gap_y 12
+gap_x 10
+gap_y 40
 minimum_size 257 999
 maximum_width 257
 show_graph_range false

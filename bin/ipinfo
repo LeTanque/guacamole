@@ -10,7 +10,8 @@
 
 # BANNER #################################################
 printf "\n"
-printf "ip INFO \n" | toilet -SkF metal -f slant
+#printf "ip INFO \n" | toilet -SkF metal -f slant
+printf "IPinfo" | figlet -txf smblock
 # RFKILL #################################################
 printf " ➜ List any blocked interfaces with 'rfkill list all' \n"
 rfkill list all &

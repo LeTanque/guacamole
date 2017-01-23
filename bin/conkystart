@@ -7,6 +7,7 @@
 # this script allows for fewer variants and a more stable backup system.
 #HOME="/home/tank"
 # Launch time
+killall conky
 printf "conkystart" | figlet -c
 sleep 0.5
 printf "\n...\n"

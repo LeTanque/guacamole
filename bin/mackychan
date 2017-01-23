@@ -11,6 +11,7 @@ MACKYCHAN="macchanger"
 SHOWMAC="macchanger -s"
 SUDO="sudo -n"
 SUDOV="sudo -v"
+SU="sudo"
 DEVICE="wlan0"
 
 # This is the mac you will be changing too if you decide to explicitely 
@@ -35,14 +36,15 @@ DEVICE="wlan0"
 #MAC="52:54:00:f7:97:5a"	#VMware
 #MAC="00:0F:13:03:10:9E"	#Etekcity USB WiFi adapter
 #MAC="14:DA:E9:8E:63:3A"	#ASUS RT-N12 Wireless eth1
-MAC="00:1C:C2:1A:75:9C"	# PURE HooToo HT TM 02 wlan0
+#MAC="00:1C:C2:1A:75:9C"	# PURE HooToo HT TM 02 wlan0
 #MAC="00:1C:C2:1A:75:9D"	# PURE HooToo HT TM 02 eth0 & eth0.1
 
 #OPTION="-m $MAC"
 ## These are the options to enable for default and random mac
-## -r = random | -p = permanent default | -m = explicit MAC
-OPTION="-p"
+## -r = random | -p = permanent default | -m = explicit MAC | -e = don't change vendor
+#OPTION="-p"
 #OPTION="-r"
+OPTION="-e"
 
 ## Enable one of these devices to change it's mac
 #DEVICE="wlan0"
@@ -62,33 +64,42 @@ OPTION="-p"
 ###########################################################
 # Begin
 ###########################################################
-printf "mackychan\n" | toilet -f lean -kF metal
+$SUDOV
+printf "mackychan\n" | figlet -xf smslant
 printf "\n➜ $MAC, original, or random mac address targeted \n"
-$SUDOV && $SUDO ifconfig $DEVICE down 
-printf ". \n"
+sleep 0.5
+printf "Bringing VPN and $DEVICE down\n"
+$SU killall mullvad
+$SU killall openvpn
+$SU killall mtunnel
+$SUDO ifconfig $DEVICE down
+printf "$DEVICE current MAC\n"
+$SHOWMAC $DEVICE
 $SUDO $MACKYCHAN $OPTION $DEVICE
-printf "\n➜ verify \n\n"
+printf "\n➜ verify \n"
+printf "MAC changed, now restarting network manager processes\n"
 $SUDO service network-manager restart
 $SUDO service networking restart
 $SUDO service network-manager restart
-printf ". " && sleep 1 && printf ". \n" && sleep 1 
+printf ". " && sleep 0.5 && printf ". \n" && sleep 0.5
 ip link | sed -n 's/..:..:..:..:..:../&/ip'
+printf "$DEVICE new MAC\n"
 $SHOWMAC $DEVICE
 printf "\n➜ unblock + up \n"
 printf "... \n"
-sleep 1
+sleep 0.5
 printf "rfkill list all. \n"
 rfkill list all
-printf "\n... \n"
+printf "... \n"
 printf "Now let's unblock stuff "
-sleep 1
+sleep 0.5
 $SUDO rfkill unblock all
 printf "\n..... \n"
-sleep 1
+sleep 0.5
 #$SUDO rfkill unblock "$DEV"
 printf "\n....... \n"
 $SUDO ifconfig $DEVICE up
-ifconfig $DEVICE 
+ifconfig $DEVICE
 $SUDO ifconfig $DEVICE up
 iwconfig $DEVICE
 rfkill list all  |  grep "yes"
