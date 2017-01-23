@@ -1,8 +1,0 @@
-#!/bin/bash
-# Dont heat me up if you cant cool me off
-sleep 3 && tomboy --panel-applet &
-sleep 1 && pidgin --nologin &
-sleep 1 && conkystart-blk &
-keepass2 &
-devileggs &
-exit $?
