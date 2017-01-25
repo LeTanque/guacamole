@@ -7,10 +7,11 @@
 # this script allows for fewer variants and a more stable backup system.
 #HOME="/home/tank"
 # Launch time
+printf "kill conky" | figlet -xcf smblock
 killall conky
-printf "conkystart" | figlet -c
+printf "create conky" | figlet -xcf smblock
 sleep 0.5
 printf "\n...\n"
 sleep 0.5
-conky -c $HOME/bin/conkyrc-T333*
+conky -c $HOME/.config/conky/conkyrc-T333
 
