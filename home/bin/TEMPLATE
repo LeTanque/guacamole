@@ -1,0 +1,149 @@
+#!/bin/bash
+#!/bin/sh
+# Script Template - Description
+# USAGE - Instructions for usage, fields to input here before running, etc.
+# Simple Ip info
+# curl ipinfo.io/geo &
+# Interfaces, outside IP, speedtest
+# notify-send "ifconfig, curl ip, geo, traceroute, speedtest" &
+#curl ipinfo.io && wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test.zip &
+#ifconfig && iwconfig
+
+# Definitions
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
+export LC_ALL="en_US.UTF-8"
+WIFACE="[wlan][0-9]"
+ETHFACE="eth[0-9]"
+IFACE="(wlan[0-9]|eth[0-9]|tun[0-9])"
+MODMATCHES="(air|ar5|at7|ath[^3]?|b43|bcma|brcm|carl|ipw|iwl|ndis|r(818|8192[eu]|871|92su)|rt[23567]|rtl|ssb|wl|(cfg|mac)80211)"
+LSMODMATCHES="(wmi|(dell|ideapad)[-_]laptop)"
+IFACEMATCHES="(wlan[0-9]|eth[0-9]|tun[0-9])"
+DMESGMATCHES="(firmware|[nN]etwork)"
+NMPROFMATCHES="\(\[connection\]\|id=\|type=\|permissions=\|autoconnect=\|\[802-11-wireless\]\|\[wifi\]\|ssid=\|bssid=\|mac-address\(-blacklist\)\?=\|mtu=\|\[802-1x\]\|[[:graph:]]*ca-certs\?=\|\[ipv[46]\]\|method=\)"
+DMESGEXCL="apparmor|(cfg|mac)80211"
+MODINFOEXCL="alias"
+MODPROBEXCL="(alsa-base|blacklist-(firewire|framebuffer|modem|oss|watchdog)|fglrx|nvidia|fbdev|bumblebee)"
+PMUTILSEXCL="/etc/pm/(power.d/(95hdparm-apm|intel-audio-powersave|sata_alpm)|sleep.d/(10_grub-common|10_unattended-upgrades.*|novatel_3g.*))"
+NETMGRNAMES=("NetworkManager" "Wicd" "ConnMan")
+NETMGRPATHS=("/usr/sbin/NetworkManager" "/usr/sbin/wicd" "/usr/sbin/connmand")
+DEC2BI=({0..1}{0..1}{0..1}{0..1}{0..1}{0..1}{0..1}{0..1})
+DEC2HEX=($(printf "%02x " {0..255}))
+
+
+# SED ########
+
+#When working with sed, it's almost always advisable to:
+/address then/s/earch/replace/
+
+
+ifconfig | sed -n 's/eth./ethernet(&)/ip'
+# match "lo"
+ip link | sed -n 's/lo/lo/p'
+# match all but "lo"   !!!! not working yet...
+ip link | sed -n 's/lo/&/!p'
+# match first two words
+sed 's/\([a-zA-Z0-9][a-zA-Z0-9]*\) \([a-zA-Z0-9][a-zA-Z0-9]*\)/\2 \1/' annoying.txt
+sed 's/\([^ ][^ ]*\) \([^ ][^ ]*\)/\2 \1/' annoying.txt
+# the delimeter can be anything you like.
+ifconfig | sed -n 's:eth:&:p'
+ifconfig | sed -n 's|eth|&|p'
+
+# match any number, followed by any character. on the 4th occurance, then print that result times 5
+ip link show  |  sed -n 's|[0-9]*|&&&&&|p4'
+
+##############
+
+
+# If Then Else statements
+if [ -t 0 ]; then
+    DIALOGAPP="terminal"
+    DIALOGBREAK=" "
+    TERMOUT="yes"
+elif [ -x /usr/bin/zenity ]; then
+    DIALOGAPP="zenity"
+    DIALOGBREAK="\n"
+else
+    exit 1
+fi
+
+if [ -t 0 ]; then
+    SUDO="sudo"
+elif [ -x /usr/bin/pkexec ]; then
+    SUDO="pkexec"
+elif [ -x /usr/bin/gksudo ]; then
+    SUDO="gksudo"
+    GKSUDO="yes"
+fi
+
+# Commands
+dialog_info () {
+    case $DIALOGAPP in
+    terminal)
+        printf "%b\n" "$1"
+        ;;
+    zenity)
+        zenity --info --text="$1"
+        ;;
+    esac
+}
+
+dialog_error () {
+    case $DIALOGAPP in
+    terminal)
+        printf "%b\n" "$1" >&2
+        ;;
+    zenity)
+        zenity --error --text="$1"
+        ;;
+    esac
+}
+
+dialog_question () {
+    case $DIALOGAPP in
+    terminal)
+        local INPUT
+        read -r -p "$1 [Y/n]: " INPUT
+        echo "${INPUT,,}"
+        ;;
+    zenity)
+        zenity --question --text="$1" || echo "no"
+        ;;
+    esac
+}
+
+# Execution
+# OPtional Organizational Headers #################################
+printf "who r u" | toilet -f lean -kF metal
+$SUDOV && $SUDO ifconfig $DEVICE down 
+printf "\n ➜ TEMPLATE DO NOT RUN"
+
+printf "\n command \n\n" | toilet -SkF gay -f slant
+LSMOD=$(lsmod | egrep "(^|[[:punct:] ])($MODMATCHES|$LSMODMATCHES)[^[:punct:] ]*([[:punct:] ]|$)")
+echo "$LSMOD"
+# RFKILL #################################################
+printf "\n rfkill\n\n"  | toilet -SkF gay -f slant
+rfkill list all
+# IFCONFIG IWCONFIG ######################################
+printf "\n ip & iw\n\n" | toilet -SkF gay -f slant
+IWCONFIG=$(iwconfig)
+sed -n '/^lo /,/^$/d' <<< "$IWCONFIG"
+IFACESW=($(sed -n 's/^\([^ ]\+\)[ ]\+Link encap:Ethernet.*/\1/p' <<< "$IWCONFIG"))
+IFCONFIG=$(ifconfig -a)
+sed '/^lo /,/^$/d' <<< "$IFCONFIG"
+IFACESETH=($(sed -n 's/^\([^ ]\+\)[ ]\+Link encap:Ethernet.*/\1/p' <<< "$IFCONFIG"))
+if (( ${#IFACESETH[@]} > 0 )); then
+    IFETHMATCHES=${IFACESETH[@]}
+    IFACEMATCHES="($IFACEMATCHES|(${IFETHMATCHES// /|}))"
+fi
+# CURL IPINFO.IO #################################################
+curl ipinfo.io/ip
+curl ipinfo.io/hostname
+curl ipinfo.io/country
+
+exit $?
+
+
+
+
+

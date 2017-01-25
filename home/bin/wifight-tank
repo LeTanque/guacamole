@@ -1,0 +1,13 @@
+#!/bin/bash
+# wifight-tank
+# simple wifite-ng launcher
+DEV="wlan0mon"
+
+
+printf "wifight-tank" | toilet -f slant --gay
+printf "\n wifite-ng launcher \n\n"
+airmon-ng check kill
+airmon-ng start $DEV
+sleep 1
+wifite-ng -i $DEV -showb -strip -crack -dict /root/laps/wordlists/Super-WPA -cowpatty -wepsave /root/laps/cap -pto 1300 -paddto 130
+

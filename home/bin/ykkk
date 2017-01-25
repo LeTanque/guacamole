@@ -1,0 +1,37 @@
+#!/bin/bash
+# ykkk - yubikey info 
+# USAGE - run and done
+YKNEO="ykneomgr"
+YKNEOL="ykneomgr -l"
+YKNEOM="ykneomgr -m"
+YKNEOW="ykneomgr -w"
+YKNEOS="ykneomgr -s"
+YKNEOD="ykneomgr -sd"
+YKINFOA="ykinfo -a"
+
+# Execution
+printf "\n ykkk \n\n" | toilet -SkF metal -f slant
+printf "\n tounge in cheek reference to the klan. 
+      ykkk provides info on yubi devices.  \n\n"
+printf "\n ➜ ykneomgr   \n"
+printf "List attached devices:   ➜   \n" 
+$YKNEOL
+printf "\n"
+printf "Output mode of Yubikey NEO:   ➜   "
+$YKNEOM
+#printf "\n"
+printf "Output firmware version for NEO:   ➜   "
+$YKNEOW
+#printf "\n"
+printf "Output serial number:   ➜   "
+$YKNEOS
+printf "Debug info on ykneo error:   ➜   "
+$YKNEOD
+printf "\n"
+printf "\n ➜  ykinfo  \n"
+printf "Get all info:   ➜   \n" 
+$YKINFOA
+
+
+
+

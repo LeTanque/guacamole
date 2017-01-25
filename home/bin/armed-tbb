@@ -1,0 +1,5 @@
+#!/bin/bash
+printf "tor monitor for TBB" | toilet -kF metal -f slant
+printf "\n\n"
+#sudo -u debian-tor arm -i 127.0.0.1:9151
+sudo -u debian-tor arm -i 127.0.0.1:9151

@@ -1,0 +1,21 @@
+#!/bin/bash
+HOME="/home/tank"
+LAPS="$HOME/etc/wifite-mod-pixiewps"
+WORDS="$HOME/laps/wordlists/cain.txt"
+IFACE="wlan0"
+
+printf "\n"
+printf "          wifite" | figlet -sf digital
+printf "\n ➜   Why fight it?"
+printf "\n pick the low hanging fruit \n"
+sleep 1
+printf "\n ➜ airmon-ng check kill services that fuck shit up, then create monitor from "$IFACE" \n" 
+sudo airmon-ng check kill
+sleep 1
+printf " ... done \n"
+sudo airmon-ng start $IFACE
+sleep 1
+printf " ... done \n"
+sleep 1
+cd $LAPS
+sudo ./wifite-ng -i mon0 -showb -mac -cowpatty -strip -crack $WORDS -dict $WORDS

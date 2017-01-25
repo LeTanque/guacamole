@@ -1,0 +1,26 @@
+#!/bin/sh
+# DNSMASQ
+# Install these apps first
+# apt-get install -y hostapd dnsmasq wireless-tools iw wvdial
+# Interface we are going to run our AP on
+APIP="wlan0"
+
+printf "sed, cat, eof \n" &
+sed -i 's|^DAEMON_CONF=.*|DAEMON_CONF=/etc/hostapd/hostapd.conf|' /etc/init.d/hostapd &
+cat <<EOF > /etc/dnsmasq.conf &
+log-facility=/var/log/dnsmasq.log &
+#address=/#/10.0.0.1 &
+#address=/google.com/10.0.0.1 &
+interface=$APIP &
+dhcp-range=10.0.0.10,10.0.0.250,12h &
+dhcp-options=3, 10.0.0.1 &
+dhcp-options=6,10.0.0.1 &
+#no-resolv & 
+log-queries &
+EOF &
+
+sleep 1 &
+printf "cool" &
+sleep 1 &
+service dnsmasq start
+exit $?j

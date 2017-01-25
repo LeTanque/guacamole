@@ -1,0 +1,131 @@
+#!/bin/bash
+#########
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
+# Regulatory location, target device, desired power + channel, fundamental commands.
+LOCATION="CA"
+DEV="wlan0"
+IF="ifconfig"
+SU="sudo -i"
+POWER="30"
+CH="11"
+
+printf "        1.37" | toilet -SkF gay -f slant
+printf "gigawatts!" | toilet -SkF metal -f slant
+printf "\n"
+printf " ➜ Target: $DEV \n"
+iw dev $DEV info
+iwlist $DEV txpower | grep "Current"
+#iwconfig $DEV  |  grep "Tx-Power"
+
+printf "\n"
+printf " ➜ $DEV down"
+printf "\n"
+$SU $IF $DEV down
+iwconfig $DEV  |  grep "$DEV"
+sleep 1
+
+printf "\n"
+printf " ➜ setting region $LOCATION"
+printf "\n"
+$SU iw reg set $LOCATION
+$SU rfkill unblock wlan
+$SU rfkill unblock all
+printf "\n"
+printf " ➜ unblock all"
+printf "\n"
+sleep 1
+iw reg get
+sleep 1
+
+printf "\n"
+printf " ➜ setting '$POWER'"
+iw --debug $DEV set txpower fixed "$POWER"mBm 
+sleep 1
+$SU rfkill unblock all
+$SU rfkill unblock wlan
+#iwconfig $DEV channel $CH
+sleep 1
+
+printf "\n"
+printf " ➜ starting $DEV"
+printf "\n"
+$SU $IF $DEV up 
+$IF $DEV  |  grep "UP"
+sleep 1
+
+printf "\n"
+printf " ➜ moment of truth"
+sleep 1
+printf "\n"
+#iwconfig $DEV  |  grep "Tx-Power"
+#iwconfig $DEV
+iwlist $DEV txpower | grep "Current"
+iw dev $DEV info | grep "addr"
+printf "\n    ◼◼◼ end ◼◼◼ \n\n"
+exit $?
+# Region to set our wireless device to. Bolivia doesn't regulate interface 
+## power usage as much as US. Canada seems promising.
+#country BO: DFS-JP
+#	(2402 - 2482 @ 40), (N/A, 20), (N/A)
+#	(5250 - 5330 @ 80), (N/A, 30), (0 ms), DFS
+#	(5735 - 5835 @ 80), (N/A, 30), (N/A)
+#country CA: DFS-FCC
+#	(2402 - 2472 @ 40), (N/A, 30), (N/A)
+#	(5170 - 5250 @ 80), (N/A, 17), (N/A)
+#	(5250 - 5330 @ 80), (N/A, 24), (0 ms), DFS
+#	(5490 - 5730 @ 160), (N/A, 24), (0 ms), DFS
+#	(5735 - 5835 @ 80), (N/A, 30), (N/A)
+# country 00: DFS-UNSET
+# 	(2402 - 2472 @ 40), (N/A, 20), (N/A)
+# 	(2457 - 2482 @ 40), (N/A, 20), (N/A), NO-IR
+# 	(2474 - 2494 @ 20), (N/A, 20), (N/A), NO-OFDM, NO-IR
+# 	(5170 - 5250 @ 80), (N/A, 20), (N/A), NO-IR
+# 	(5250 - 5330 @ 80), (N/A, 20), (0 ms), DFS, NO-IR
+# 	(5490 - 5730 @ 160), (N/A, 20), (0 ms), DFS, NO-IR
+# 	(5735 - 5835 @ 80), (N/A, 20), (N/A), NO-IR
+# 	(57240 - 63720 @ 2160), (N/A, 0), (N/A)
+# country CO: DFS-FCC
+# 	(2402 - 2482 @ 40), (N/A, 20), (N/A)
+# 	(5170 - 5250 @ 80), (N/A, 17), (N/A)
+# 	(5250 - 5330 @ 80), (N/A, 24), (0 ms), DFS
+# 	(5490 - 5730 @ 160), (N/A, 24), (0 ms), DFS
+# 	(5735 - 5835 @ 80), (N/A, 30), (N/A)
+# country ES: DFS-ETSI
+# 	(2400 - 2483 @ 40), (N/A, 20), (N/A)
+# 	(5150 - 5250 @ 80), (N/A, 23), (N/A), NO-OUTDOOR
+# 	(5250 - 5350 @ 80), (N/A, 20), (0 ms), NO-OUTDOOR, DFS
+# 	(5470 - 5725 @ 160), (N/A, 26), (0 ms), DFS
+# 	(57000 - 66000 @ 2160), (N/A, 40), (N/A)
+# country GY: DFS-UNSET
+# 	(2402 - 2482 @ 40), (N/A, 30), (N/A)
+# 	(5735 - 5835 @ 80), (N/A, 30), (N/A)
+# country JP: DFS-JP
+# 	(2402 - 2482 @ 40), (N/A, 20), (N/A)
+# 	(2474 - 2494 @ 20), (N/A, 20), (N/A), NO-OFDM
+# 	(4910 - 4990 @ 40), (N/A, 23), (N/A)
+# 	(5030 - 5090 @ 40), (N/A, 23), (N/A)
+# 	(5170 - 5250 @ 80), (N/A, 20), (N/A)
+# 	(5250 - 5330 @ 80), (N/A, 20), (0 ms), DFS
+# 	(5490 - 5710 @ 160), (N/A, 23), (0 ms), DFS
+# country BZ: DFS-JP
+# 	(2402 - 2482 @ 40), (N/A, 30), (N/A)
+# 	(5735 - 5835 @ 80), (N/A, 30), (N/A)
+# country NZ: DFS-FCC
+# 	(2402 - 2482 @ 40), (N/A, 30), (N/A)
+# 	(5170 - 5250 @ 80), (N/A, 17), (N/A)
+# 	(5250 - 5330 @ 80), (N/A, 24), (0 ms), DFS
+# 	(5490 - 5730 @ 160), (N/A, 24), (0 ms), DFS
+# 	(5735 - 5835 @ 80), (N/A, 30), (N/A)
+# country GB: DFS-ETSI
+# 	(2402 - 2482 @ 40), (N/A, 20), (N/A)
+# 	(5170 - 5250 @ 80), (N/A, 20), (N/A)
+# 	(5250 - 5330 @ 80), (N/A, 20), (0 ms), DFS
+# 	(5490 - 5710 @ 160), (N/A, 27), (0 ms), DFS
+# 	(57000 - 66000 @ 2160), (N/A, 40), (N/A)
+# country FR: DFS-ETSI
+# 	(2402 - 2482 @ 40), (N/A, 20), (N/A)
+# 	(5170 - 5250 @ 80), (N/A, 20), (N/A)
+# 	(5250 - 5330 @ 80), (N/A, 20), (0 ms), DFS
+# 	(5490 - 5710 @ 160), (N/A, 27), (0 ms), DFS
+# 	(57000 - 66000 @ 2160), (N/A, 40), (N/A)

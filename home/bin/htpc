@@ -1,0 +1,6 @@
+#!/bin/sh
+HTPC="/home/tank/etc/HTPC-Manager-master"
+
+cd $HTPC && python Htpc.py  &  sleep 3  echo "http://localhost:8085" | toilet -F gay 
+
+exit $?
