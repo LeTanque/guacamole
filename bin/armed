@@ -1,8 +1,0 @@
-#!/bin/bash
-printf "tor mon" | toilet -kF gay -f slant
-printf "armed"
-printf "\n\n"
-#GUI interface
-#arm -i 127.0.0.1:9151 -g
-#Not gooey
-arm -i 127.0.0.1:9151

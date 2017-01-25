@@ -1,6 +1,0 @@
-#!/bin/bash
-#Netstat preferred options
-sudo -v
-printf "netstat-monitor\n" | figlet -c
-sudo netstat -Wecponv --ip
-
