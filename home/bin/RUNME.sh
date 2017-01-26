@@ -2,9 +2,6 @@
 # GuacaMole handyman
  
 GUACA='"$\HOME/bin:$\PATH"'
-MOLE='if [ -d "$\HOME/bin" ] ; then'
-MOLE2='PATH="$\HOME/bin:$\PATH"'
-MOLE3='fi'
 
 confirm () {
     read -r -p "${1:-Would you like to proceed? [y/N]} " response
@@ -22,8 +19,11 @@ confirm () {
 # Begin
 ############################################
 printf "handyman \n" && sleep 1
-printf "make directory ~/bin if it doesn't already exist \n" && sleep 0.5
+printf "making some home directories if they don't already exist \n" && sleep 0.5
 mkdir -v ~/bin
+mkdir -v ~/.config/conky
+mkdir -v ~/etc
+mkdir -v ~/Downloads
 sleep 3
 
 ############################################
@@ -42,7 +42,7 @@ else
 #umask 022
 
 # if running bash
-if [ -n "$BASH_VERSION" ]; then
+if [ -n '"$BASH_VERSION"' ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
@@ -67,8 +67,11 @@ printf ".profile written \n\n"
 ############################################
 printf "\nOMFG \n"
 printf "moving scripts to ~/bin and symlinking back here \n" && sleep 1
-mv ~/git/guacamole-0.1/bin/!'RUNME|README.md' ~/bin
+mv * ~/bin
+mv ~/bin/RUNME.sh ~/git/guacamole-0.1/home/bin/RUNME.sh
+mv ~/bin/README.md ~/git/guacamole-0.1/home/bin/README.md
+#mv ~/git/guacamole-0.1/home/bin/!'RUNME.sh|README.md' ~/bin
 printf ". \n" && sleep 1
 cd ~/bin
 printf "." && sleep 0.5 && printf ". \n" && sleep 0.5
-ln -s ~/bin/* ~/git/guacamole-0.1/bin/
+ln -s ~/bin/* ~/git/guacamole-0.1/home/bin
