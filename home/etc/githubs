@@ -1,0 +1,17 @@
+#!/bin/bash
+# Githubs
+
+# BBlack wireless
+git clone https://github.com/beagleboard/beaglebone-black-wireless.git
+
+# GRC generic colorizer
+git clone https://github.com/pengwynn/grc.git
+
+# Letanque guacamole
+git clone https://github.com/LeTanque/guacamole-0.1
+
+# BBB AP github. not to use directly but for reference
+git clone https://github.com/milesrichardson/bbb-ap.git
+
+# Another BBB AP github 
+git clone https://github.com/oblique/create_ap.git
