@@ -69,7 +69,7 @@ confirm && if grep -Fxq "foofoo" ~/.bashrc
 then
     printf "foofoo \n\n"
 else
-    cat > $HOME/.profile << __BASHRC__
+    cat > $HOME/.bashrc << __BASHRC__
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # If not running interactively, don't do anything
