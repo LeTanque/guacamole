@@ -26,38 +26,6 @@ mkdir -v ~/etc
 mkdir -v ~/Downloads
 sleep 3
 
-############################################
-# prey 
-############################################
-printf "if string "$\GUACA" doesn't exist in .profile, add private bin to PATH \n\n" && sleep 1
-
-confirm && if grep -Fxq "$GUACA" ~/.profile
-then
-    printf "~/bin already added to PATH \n\n"
-else
-    cat > $HOME/.profile << __PROFILE__
-# ~/.profile: executed by the command interpreter for login shells.
-# for umask for ssh logins, install and configure the libpam-umask package.
-#umask 022
-
-# if running bash
-if [ -n "\$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "\$HOME/.bashrc" ]; then
-    . "\$HOME/.bashrc"
-    fi
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "\$HOME/bin" ] ; then
-    PATH="\$HOME/bin:\$PATH"
-fi
-__PROFILE__
-############################################
-fi
-
-
-printf ".profile written \n\n" 
 
 
 ############################################
