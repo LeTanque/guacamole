@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/tank/bin/startup-blk
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=Startup Scriptz
+Comment[en_US]=Startup some shiiiiit
+X-GNOME-Autostart-Delay=0
