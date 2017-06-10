@@ -1,0 +1,28 @@
+#!/bin/bash
+#iwapmacatak
+#Assign specific mac for desired Access Point.
+sudo -i
+DEV="ath0"			#Target interface
+MAC="4E:7A:8A:8D:C3:5E"			#Desired MAC
+
+print "\niwapmacatak\n" | figlet -c
+print "script assumes you have root from here forward\n"
+sleep 0.5 && printf "." && sleep 0.5 && printf "." && sleep 0.5 && printf ".\n"
+ifconfig $DEV
+print "\nTake $DEV down\n"
+sleep 1
+ifconfig $DEV down
+sleep 0.5
+print "assign desired MAC to $DEV\n"
+sleep 1
+iwconfig $DEV
+iwconfig $DEV ap $MAC
+sleep 0.5
+print "commit changes\n"
+sleep 0.5
+iwconfig $DEV commit
+sleep 0.5
+print "check ifconfig and iwconfig to make sure our changes stick\n"
+ifconfig $DEV up
+iwconfig $DEV
+print "FIN\n"

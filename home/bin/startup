@@ -1,8 +1,26 @@
 #!/bin/bash
-sleep 1 && conkystart &
+
+cvt 1920 1080 60 &
+xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync &
+xrandr --addmode VGA1 1920x1080_60.00 &
+xrandr --output VGA1 --mode 1920x1080 &
+compton --config "~/.config/compton.conf" &
+compton -b -c &
+feh -F --bg-fill ~/Pictures/Wallpapers/matrix-ripple-Simple.jpg  &
+tor &
+conkystart &
+volti &
+# ladi-system-tray &
+pavucontrol &
+xset s off &
+
+sleep 0.5 && tint2 &
+
 sleep 1 && devileggs &
 sleep 1 && tomboy --panel-applet &
-sleep 1 && pidgin --nologin &
+#sleep 1 && pidgin --nologin &
 sleep 1 && keepass2 &
+#sleep 1 && liferea --mainwindow-state="iconified" &
+
 
 exit $?

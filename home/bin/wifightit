@@ -1,7 +1,7 @@
 #!/bin/bash
 HOME="/home/tank"
 LAPS="$HOME/etc/wifite-mod-pixiewps"
-WORDS="$HOME/laps/wordlists/cain.txt"
+WORDS="$HOME/Laps/wordlists/cain.txt"
 IFACE="wlan0"
 
 printf "\n"

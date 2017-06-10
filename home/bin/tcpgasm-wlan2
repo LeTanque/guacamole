@@ -12,4 +12,4 @@
 #gnome-terminal --window-with-profile=IPINFO-HOLD -e "pkexec tcpflow -i eth0 -J -c -s" &
 #gnome-terminal --window-with-profile=holdme -e "sudo tcpflow -Jcsi eth0"
 sudo tcpflow -aJcsi wlan2
-exit $?
+

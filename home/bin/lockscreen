@@ -1,13 +1,13 @@
 #!/bin/bash
 # kill commonly running programs, softly
-printf "kill em softly" | figlet -kc
+printf "lockscreen" | figlet -xcf smblock
 sudo -v
 printf "\n\n 	ATTENTION ATTENTION ATTENTION  \n\n"
-sleep 1
-printf " ➜ Script will graceful exit commonly used programs then logout \n" 
-sleep 1
+sleep 0.5
+printf " ➜ Script will graceful exit commonly used programs then lockscreen \n" 
+sleep 0.5
 printf " ➜ kill mullvad \n"
-sleep 1
+sleep 0.5
 sudo killall mullvad
 sudo killall mtunnel
 sudo killall openvpn
@@ -16,10 +16,9 @@ sleep 1
 killall nemo
 printf " ➜ kill tor & firefox \n"
 sleep 1
-killall tor
 sudo killall tor
 killall firefox
-printf " ➜ kill keepassx 7 keepass2 lock then exit \n"
+printf " ➜ kill keepassx & keepass2 lock then exit \n"
 sleep 1
 killall keepassx
 keepass2 --lock-all

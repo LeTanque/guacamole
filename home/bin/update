@@ -1,13 +1,17 @@
 #!/bin/bash
 ## Update sources, upgrade
 sudo -v
+sl
+printf "verifying." && sleep 0.1 && printf "." && sleep 0.1 && printf "." && sleep 0.1 && printf "."
+printf "\n\n     " && sleep 0.1 && printf "T  " && sleep 0.1 && printf "A  " && sleep 0.1 && printf "N  " && sleep 0.1 && printf "K  " && sleep 0.1 && printf "." && sleep 0.1 && printf "." && sleep 0.1 && printf "." && sleep 0.1 && printf "." && sleep 0.1 && printf ". \n"
 sleep 0.1 && printf " > A U T H E N T I C A T I O N   V E R I F I E D  \n\n\n"
-flite -t "updating"
+flite -t "initiating update"
 sleep 0.1
 printf "UPdate" | figlet -ocf slant
 printf "apt update, upgrade, dist-upgrade\n"
-sudo apt update
+sudo apt update 
 sudo apt upgrade -y
 sudo apt dist-upgrade
-sudo apt autoremove -y
+sudo apt autoclean -y
+sudo apt autoremove -y 
 sudo apt autoclean -y

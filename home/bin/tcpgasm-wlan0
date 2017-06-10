@@ -36,4 +36,4 @@ printf "          tcpflow -$C$G $E $DEV\n"
 printf "          Console print only, multicolor, $DEV scanner"
 printf "\n\n"
 sleep 2
-sudo tcpflow -$C$G $E $DEV
+sudo tcpflow -$C$J $E $DEV

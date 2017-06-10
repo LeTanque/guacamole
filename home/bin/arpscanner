@@ -1,0 +1,11 @@
+#!/bin/bash
+# Arp scan tool
+IFACE='eth0'
+########################################
+sudo -v
+printf 'arpscanner\n' | figlet -xf smslant
+sudo arp-scan -lI $IFACE
+sudo arp-scan -lI $IFACE
+sudo arp-scan -lI $IFACE
+sudo arp-scan -lI $IFACE
+sudo arp-scan -lI $IFACE

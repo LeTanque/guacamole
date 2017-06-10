@@ -1,0 +1,13 @@
+#!/bin/bash
+# arp-scan helper script
+display=LVDS1
+
+printf '  arpscanner2\n' | toilet --metal -f smslant
+echo "What interface would you like to arp-scan (input valid interface; wlan0, eth0, etc)?"
+read interface
+#echo $interface
+sudo arp-scan -lI $interface
+sudo arp-scan -lI $interface
+sudo arp-scan -lI $interface
+
+exit $?

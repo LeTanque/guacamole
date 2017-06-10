@@ -1,0 +1,39 @@
+#!/bin/bash
+# kill commonly running programs
+# restart the system
+printf "restarter" | figlet -tcf smblock
+sudo -v
+printf "\n 	WARNING WARNING WARNING \n"
+printf " ➜ Script will attempt to restart the machine following \n"
+printf "   the graceful exit of commonly used programs \n"
+sleep 0.2
+printf " ➜ kill mullvad \n"
+sleep 0.3
+sudo killall mullvad
+sleep 0.3
+sudo killall mtunnel
+sleep 0.2
+sudo killall openvpn
+printf " ➜ kill nemo \n"
+sleep 0.1
+killall nemo
+printf " ➜ kill tor & firefox \n"
+sleep 0.1
+killall tor
+sleep 0.1
+killall firefox
+printf " ➜ kill keepassx & keepass2 lock then exit \n"
+sleep 0.2
+killall keepassx
+keepass2 --lock-all
+sleep 0.1
+keepass2 --exit-all
+sleep 0.1
+printf " ➜ truecrypt dismount \n"
+sleep 0.3
+truecrypt -d
+sleep 0.3
+killall truecrypt
+printf " ➜ restart in 2 seconds \n"
+sleep 2
+sudo shutdown -r now

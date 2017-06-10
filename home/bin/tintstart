@@ -1,0 +1,9 @@
+#!/bin/bash
+# Tint2 start (but first kill with no mercy
+
+printf "tintstart" | figlet -xcf smslant
+
+killall tint2
+tint2 &
+
+exit $?

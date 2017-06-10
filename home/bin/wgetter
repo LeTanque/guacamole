@@ -1,0 +1,77 @@
+#!/bin/bash
+# wgetter
+# Conveniently uses wget to help you download
+set -x
+OUT2="$HOME/Downloads"
+#################
+printf "Would you like to watch the progress of this download or run in background?\n"
+
+
+PS3='Choose watch or background '
+options=("Watch" "Background")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Watch") echo "You will watch";;
+        "Background") echo "Will download in background";;
+        "") break;;
+        *) echo invalid option;;
+    esac
+done
+
+
+if [ "$#" != "2" ] ; then
+	$optN="-b"
+	else
+	echo=''
+fi
+
+
+if [ "$menu" == "fish" ]; then
+  if [ "$animal" == "penguin" ]; then
+    echo -e "Hmmmmmm fish... Tux happy!\n"
+  elif [ "$animal" == "dolphin" ]; then
+    echo -e "\a\a\aPweetpeettreetppeterdepweet!\a\a\a\n"
+  else
+    echo -e "*prrrrrrrt*\n"
+  fi
+else
+  if [ "$animal" == "penguin" ]; then
+    echo -e "Tux don't like that.  Tux wants fish!\n"
+    exit 1
+  elif [ "$animal" == "dolphin" ]; then
+    echo -e "\a\a\a\a\a\aPweepwishpeeterdepweet!\a\a\a"
+    exit 2
+  else
+    echo -e "Will you read this sign?!  Don't feed the "$animal"s!\n"
+    exit 3
+  fi
+fi
+
+
+
+#################
+# Definitions
+printf "Download URL  "
+read URL
+if URL=$URL
+	then
+	echo="$URL";
+fi
+#################
+printf "Download location (leave blank for $HOME/Downloads)  "
+read OUT
+if OUT=$OUT ; then
+	echo="$OUT";
+fi
+#################
+#downy=$[$OUT - 1]
+#if [ $OUT -le $downy ] ; then
+	#$OUT2="$HOME/Downloads/";
+#fi
+
+# 
+#########
+
+#wget -b -O $OUT $URL
+wget $opt -o $HOME/temp/wget -P$OUT$OUT2 $URL

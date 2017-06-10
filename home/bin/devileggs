@@ -8,8 +8,8 @@
 #  -f, --folder=FOLDER     Search for scripts in this folder
 #  -v, --version           Show Devilspie2 version and quit
 HOME="/home/tank"
-FOLDER="-f $HOME/.devilspie2 "
-DEBUG="-d -f $HOME/.devilspie2/debug "
+FOLDER="-f $HOME/.config/devilspie2 "
+DEBUG="-d -f $HOME/.config/devilspie2/debug "
 
 printf "devileggs" | toilet -SkF metal -f slant
 printf "devilspie2 running devilish.lua \n\n"

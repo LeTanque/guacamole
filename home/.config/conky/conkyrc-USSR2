@@ -1,0 +1,75 @@
+######################
+# - Conky settings - #
+######################
+cpu_avg_samples 1
+double_buffer true
+format_human_readable true
+imlib_cache_size 0
+net_avg_samples 1
+no_buffers false
+out_to_console false
+top_cpu_separate true
+total_run_times 0
+update_interval 0.87
+use_spacer left
+max_specials 999
+max_user_text 25000
+top_cpu_separate true
+if_up_strictness address
+
+#####################
+# - Window  Specs - #
+#####################
+## Alignment set with: tl, tr, tm, bl, br, bm, ml, mm, mr, none
+alignment bl
+border_margin 0
+border_width 8
+default_bar_size 257 20
+background true
+own_window_class Conky
+own_window true
+own_window_colour 010101
+own_window_type desktop
+own_window_transparent false
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual true
+own_window_argb_value 30
+gap_x 10
+gap_y -65
+minimum_size 257 800
+maximum_width 257
+show_graph_range false
+show_graph_scale true
+short_units false
+
+#####################
+# - Graphics Sett - #
+#####################
+color0 171717	# very dark grey
+color1 3FBB9E	# aque teen blue
+color2 D5181C	# enflamed labia red
+color3 963ECD	# homofag purp
+color4 C91569	# vagina pink dark
+color5 4DCF57	# greeny
+color6 232323	# middle grey
+color7 DF1919	# crab killing red
+color8 272727	# grey
+color9 a0a0a0	# very dark grey
+default_color c0c0c0			# lighter shade of grey
+default_gauge_size 45 20
+default_shade_color 212121		# grey
+default_outline_color 000000	# cheap black
+draw_borders false
+draw_graph_borders true
+draw_outline false
+draw_shades false
+override_utf8_locale true
+stippled_borders 1
+uppercase false
+use_xft true
+xftfont inconsolata:size=8
+xftalpha false
+#☂
+################
+TEXT
+

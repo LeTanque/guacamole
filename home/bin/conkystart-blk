@@ -1,0 +1,27 @@
+#!/bin/bash
+## Replace user if applicable
+################################################
+HOME="/home/tank"
+HOME_BIN="$HOME/bin"
+################################################
+printf '   killin' | figlet -Skof smslant
+printf '    in da name of!\n'
+echo '     /    /   /  / / / / / / /'
+killall conky
+killall conky
+echo '     \    \   \  \ \ \ \ \ \ \'
+sleep 0.5
+echo '     /    /   /  / / / / / / /'
+killall conky
+echo '     \    \   \  \ \ \ \ \ \ \'
+sleep 1
+echo '     /    /   /  / / / / / / /'
+printf '   rise!' | figlet -Skof smslant
+printf '    again, motherconker!\n'
+echo '     \    \   \  \ \ \ \ \ \ \'
+################################################
+## Start conky
+sleep 0.1 && conky -c $HOME_BIN/conkyrc-blk &
+sleep 0.4 && conky -c $HOME_BIN/conkyrc-blk_dos &
+
+exit $?

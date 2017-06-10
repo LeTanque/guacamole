@@ -5,27 +5,29 @@ sudo -v
 printf "\n 	WARNING WARNING WARNING \n"
 printf " ➜ Script will attempt to shutdown the machine following \n"
 printf "   the graceful exit of commonly used programs \n"
-sleep 0.5
+sleep 0.2
 printf " ➜ kill mullvad \n"
 sleep 0.5
 sudo killall mullvad
-sleep 0.2
+sleep 0.5
 sudo killall mtunnel
 sleep 0.2
 sudo killall openvpn
 printf " ➜ kill nemo \n"
-sleep 0.4
+sleep 0.3
 killall nemo
 printf " ➜ kill tor & firefox \n"
-sleep 0.4
+sleep 0.5
 killall tor
-sleep 0.2
+sleep 0.3
 killall firefox
 printf " ➜ kill keepassx & keepass2 lock then exit \n"
 sleep 0.5
 killall keepassx
 keepass2 --lock-all
+sleep 0.1
 keepass2 --exit-all
+sleep 0.1
 printf " ➜ truecrypt dismount \n"
 sleep 0.5
 truecrypt -d

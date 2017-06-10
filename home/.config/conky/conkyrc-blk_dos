@@ -1,0 +1,137 @@
+######################
+# - Conky settings - #
+######################
+cpu_avg_samples 1
+double_buffer true
+format_human_readable true
+imlib_cache_size 0
+net_avg_samples 1
+no_buffers false
+out_to_console false
+top_cpu_separate true
+total_run_times 0
+update_interval 0.87
+use_spacer right
+max_specials 999
+max_user_text 25000
+top_cpu_separate true
+if_up_strictness address
+lua_load ~/.config/conky/conky.lua
+
+#####################
+# - Window  Specs - #
+#####################
+## Alignment options: tl, tr, tm, bl, br, bm, ml, mm, mr, none
+alignment br
+border_width 7
+default_bar_size 487 17
+default_gauge_size 45 20
+background true
+own_window_class Conky
+own_window true
+own_window_type desktop
+own_window_transparent false
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual true
+own_window_argb_value 220
+gap_x 384
+gap_y 9
+minimum_size 487 900
+maximum_width 487
+show_graph_range false
+show_graph_scale false
+short_units false
+draw_borders false
+draw_graph_borders true
+draw_outline false
+draw_shades false
+override_utf8_locale true
+stippled_borders 5
+uppercase false
+use_xft true
+xftfont inconsolata:size=9
+xftalpha 1
+
+###############
+# - Windows - #
+###############
+default_color 7382C1			# flattr gdefault modded 405060
+default_shade_color 1d1d1d		# dk fkng grey
+default_outline_color F7F7F7	# cheap coke
+own_window_colour 232323        # deep black
+##############
+# - Colors - #
+##############
+color0 1F1F1F					# blacker
+color1 d9d9d9					# light grey
+color2 dd1919					# redical
+color3 9b59b6					# flattr violet
+color4 3498db					# flattr blue
+color5 27ae60					# green
+color6 bdc3c7					# grey
+color7 7C5983					# dark purple
+color8 5E5E5E					# dark grey 
+color9 00d9ff					# flattr cyan
+
+###############################################################
+TEXT
+${if_up eth0}${font inconsolata:size=11}${voffset 19}E T H E R N E T  ${voffset -3}${color6}${font}${stippled_hr}${color}${else}${voffset 19}${color2}${font inconsolata:size=11}N O   E T H E R N E T  ${voffset -3}${color}${color6}${font}${stippled_hr}${color}${endif}
+${voffset 3}
+${if_gw}Default route ${color9}${gw_iface}${color} address ${alignr 222}${color5}${gw_ip}${color}${else}${voffset -14}${endif}
+${if_up eth0}Wired alpha ${color9}eth0${color} ${alignr 222}${color9}${addr eth0}${color}${else}Wired alpha ${color9}eth0${color} ${alignr 222}${color2}DOWN${color}${endif}
+   ${if_up eth0}${color9}Hostname${color} ${alignr 222}${color5}${nodename}${color}${else}${voffset -14}${endif}
+   ${if_up eth0}${color9}Addresses${color} ${alignr 222}${color5}${addrs eth0}${color}${else}${voffset -14}${endif}
+   ${if_up eth0}${color9}External address${color} ${alignr 222}${color5}${curl http://ipinfo.io/ip 10}${color}${else}${voffset -14}${endif}
+${if_up eth1}Wired beta ${color9}eth1${color} ${alignr 222}${color5}${addr eth1}${color}${else}Wired beta ${color9}eth1${color} ${alignr 222}${color2}DOWN${color}${endif}
+   ${if_up eth1}${color9}Hostname${color} ${alignr 222}${color5}${nodename}${color}${else}${voffset -14}${endif}
+   ${if_up eth1}${color9}Addresses${color} ${alignr 222}${color5}${addrs eth1}${color}${else}${voffset -14}${endif}
+   ${if_up eth1}${color9}External address${color} ${alignr 222}${color5}${curl http://ipinfo.io/ip 10}${color}${else}${voffset -14}${endif}
+${voffset 3}
+${font inconsolata:size=11}C O N N E C T I O N S  ${voffset -3}${color6}${font}${stippled_hr}${color}
+${voffset -10}
+Total Connections = ${color4}${tcp_portmon 1 65535 count}${color}
+${voffset -5}${color8}${stippled_hr}${color}
+${font inconsolata:size=8}${color6}H O S T${alignr 96}R E M O T E   I P${alignr 62}P R O T O${alignr 34}L O C A L${alignr}R E M O T E${font}${color}
+${voffset -5}${hr}
+${color5}${tcp_portmon 1 65535 rhost 0}${color}${goto 167} ${tcp_portmon 1 65535 rip 0} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 0}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 0} ${alignr}${tcp_portmon 1 65535 rport 0}${color}
+${color5}${tcp_portmon 1 65535 rhost 1}${color}${goto 167} ${tcp_portmon 1 65535 rip 1} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 1}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 1} ${alignr}${tcp_portmon 1 65535 rport 1}${color}
+${color5}${tcp_portmon 1 65535 rhost 2}${color}${goto 167} ${tcp_portmon 1 65535 rip 2} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 2}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 2} ${alignr}${tcp_portmon 1 65535 rport 2}${color}
+${color5}${tcp_portmon 1 65535 rhost 3}${color}${goto 167} ${tcp_portmon 1 65535 rip 3} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 3}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 3} ${alignr}${tcp_portmon 1 65535 rport 3}${color}
+${color5}${tcp_portmon 1 65535 rhost 4}${color}${goto 167} ${tcp_portmon 1 65535 rip 4} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 4}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 4} ${alignr}${tcp_portmon 1 65535 rport 4}${color}
+${color5}${tcp_portmon 1 65535 rhost 5}${color}${goto 167} ${tcp_portmon 1 65535 rip 5} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 5}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 5} ${alignr}${tcp_portmon 1 65535 rport 5}${color}
+${color5}${tcp_portmon 1 65535 rhost 6}${color}${goto 167} ${tcp_portmon 1 65535 rip 6} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 6}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 6} ${alignr}${tcp_portmon 1 65535 rport 6}${color}
+${color5}${tcp_portmon 1 65535 rhost 7}${color}${goto 167} ${tcp_portmon 1 65535 rip 7} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 7}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 7} ${alignr}${tcp_portmon 1 65535 rport 7}${color}
+${color5}${tcp_portmon 1 65535 rhost 8}${color}${goto 167} ${tcp_portmon 1 65535 rip 8} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 8}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 8} ${alignr}${tcp_portmon 1 65535 rport 8}${color}
+${color5}${tcp_portmon 1 65535 rhost 9}${color}${goto 167} ${tcp_portmon 1 65535 rip 9} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 9}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 9} ${alignr}${tcp_portmon 1 65535 rport 9}${color}
+${color5}${tcp_portmon 1 65535 rhost 10}${color}${goto 167} ${tcp_portmon 1 65535 rip 10} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 10}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 10} ${alignr}${tcp_portmon 1 65535 rport 10}${color}
+${color5}${tcp_portmon 1 65535 rhost 11}${color}${goto 167} ${tcp_portmon 1 65535 rip 11} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 11}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 11} ${alignr}${tcp_portmon 1 65535 rport 11}${color}
+${color5}${tcp_portmon 1 65535 rhost 12}${color}${goto 167} ${tcp_portmon 1 65535 rip 12} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 12}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 12} ${alignr}${tcp_portmon 1 65535 rport 12}${color}
+${color5}${tcp_portmon 1 65535 rhost 13}${color}${goto 167} ${tcp_portmon 1 65535 rip 13} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 13}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 13} ${alignr}${tcp_portmon 1 65535 rport 13}${color}
+${color5}${tcp_portmon 1 65535 rhost 14}${color}${goto 167} ${tcp_portmon 1 65535 rip 14} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 14}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 14} ${alignr}${tcp_portmon 1 65535 rport 14}${color}
+${color5}${tcp_portmon 1 65535 rhost 15}${color}${goto 167} ${tcp_portmon 1 65535 rip 15} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 15}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 15} ${alignr}${tcp_portmon 1 65535 rport 15}${color}
+${color5}${tcp_portmon 1 65535 rhost 16}${color}${goto 167} ${tcp_portmon 1 65535 rip 16} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 16}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 16} ${alignr}${tcp_portmon 1 65535 rport 16}${color}
+${color5}${tcp_portmon 1 65535 rhost 17}${color}${goto 167} ${tcp_portmon 1 65535 rip 17} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 17}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 17} ${alignr}${tcp_portmon 1 65535 rport 17}${color}
+${color5}${tcp_portmon 1 65535 rhost 18}${color}${goto 167} ${tcp_portmon 1 65535 rip 18} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 18}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 18} ${alignr}${tcp_portmon 1 65535 rport 18}${color}
+${color5}${tcp_portmon 1 65535 rhost 19}${color}${goto 167} ${tcp_portmon 1 65535 rip 19} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 19}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 19} ${alignr}${tcp_portmon 1 65535 rport 19}${color}
+${color5}${tcp_portmon 1 65535 rhost 20}${color}${goto 167} ${tcp_portmon 1 65535 rip 20} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 20}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 20} ${alignr}${tcp_portmon 1 65535 rport 20}${color}
+${color5}${tcp_portmon 1 65535 rhost 21}${color}${goto 167} ${tcp_portmon 1 65535 rip 21} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 21}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 21} ${alignr}${tcp_portmon 1 65535 rport 21}${color}
+${color5}${tcp_portmon 1 65535 rhost 22}${color}${goto 167} ${tcp_portmon 1 65535 rip 22} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 22}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 22} ${alignr}${tcp_portmon 1 65535 rport 22}${color}
+${color5}${tcp_portmon 1 65535 rhost 23}${color}${goto 167} ${tcp_portmon 1 65535 rip 23} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 23}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 23} ${alignr}${tcp_portmon 1 65535 rport 23}${color}
+${color5}${tcp_portmon 1 65535 rhost 24}${color}${goto 167} ${tcp_portmon 1 65535 rip 24} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 24}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 24} ${alignr}${tcp_portmon 1 65535 rport 24}${color}
+${color5}${tcp_portmon 1 65535 rhost 25}${color}${goto 167} ${tcp_portmon 1 65535 rip 25} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 25}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 25} ${alignr}${tcp_portmon 1 65535 rport 25}${color}
+${color5}${tcp_portmon 1 65535 rhost 26}${color}${goto 167} ${tcp_portmon 1 65535 rip 26} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 26}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 26} ${alignr}${tcp_portmon 1 65535 rport 26}${color}
+${color5}${tcp_portmon 1 65535 rhost 27}${color}${goto 167} ${tcp_portmon 1 65535 rip 27} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 27}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 27} ${alignr}${tcp_portmon 1 65535 rport 27}${color}
+${color5}${tcp_portmon 1 65535 rhost 28}${color}${goto 167} ${tcp_portmon 1 65535 rip 28} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 28}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 28} ${alignr}${tcp_portmon 1 65535 rport 28}${color}
+${color5}${tcp_portmon 1 65535 rhost 29}${color}${goto 167} ${tcp_portmon 1 65535 rip 29} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 29}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 29} ${alignr}${tcp_portmon 1 65535 rport 29}${color}
+${color5}${tcp_portmon 1 65535 rhost 30}${color}${goto 167} ${tcp_portmon 1 65535 rip 30} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 30}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 30} ${alignr}${tcp_portmon 1 65535 rport 30}${color}
+${color5}${tcp_portmon 1 65535 rhost 31}${color}${goto 167} ${tcp_portmon 1 65535 rip 31} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 31}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 31} ${alignr}${tcp_portmon 1 65535 rport 31}${color}
+${color5}${tcp_portmon 1 65535 rhost 32}${color}${goto 167} ${tcp_portmon 1 65535 rip 32} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 32}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 32} ${alignr}${tcp_portmon 1 65535 rport 32}${color}
+${color5}${tcp_portmon 1 65535 rhost 33}${color}${goto 167} ${tcp_portmon 1 65535 rip 33} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 33}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 33} ${alignr}${tcp_portmon 1 65535 rport 33}${color}
+${color5}${tcp_portmon 1 65535 rhost 34}${color}${goto 167} ${tcp_portmon 1 65535 rip 34} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 34}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 34} ${alignr}${tcp_portmon 1 65535 rport 34}${color}
+${color5}${tcp_portmon 1 65535 rhost 35}${color}${goto 167} ${tcp_portmon 1 65535 rip 35} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 35}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 35} ${alignr}${tcp_portmon 1 65535 rport 35}${color}
+${color5}${tcp_portmon 1 65535 rhost 36}${color}${goto 167} ${tcp_portmon 1 65535 rip 36} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 36}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 36} ${alignr}${tcp_portmon 1 65535 rport 36}${color}
+${color5}${tcp_portmon 1 65535 rhost 37}${color}${goto 167} ${tcp_portmon 1 65535 rip 37} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 37}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 37} ${alignr}${tcp_portmon 1 65535 rport 37}${color}
+${color5}${tcp_portmon 1 65535 rhost 38}${color}${goto 167} ${tcp_portmon 1 65535 rip 38} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 38}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 38} ${alignr}${tcp_portmon 1 65535 rport 38}${color}
+${color5}${tcp_portmon 1 65535 rhost 39}${color}${goto 167} ${tcp_portmon 1 65535 rip 39} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 39}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 39} ${alignr}${tcp_portmon 1 65535 rport 39}${color}
+${color5}${tcp_portmon 1 65535 rhost 40}${color}${goto 167} ${tcp_portmon 1 65535 rip 40} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 40}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 40} ${alignr}${tcp_portmon 1 65535 rport 40}${color}
+${color5}${tcp_portmon 1 65535 rhost 41}${color}${goto 167} ${tcp_portmon 1 65535 rip 41} ${goto 287}${color4}${tcp_portmon 1 65535 rservice 41}${color}${goto 363}${color2}${tcp_portmon 1 65535 lport 41} ${alignr}${tcp_portmon 1 65535 rport 41}${color}

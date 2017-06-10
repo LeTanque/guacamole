@@ -1,0 +1,9 @@
+#!/bin/bash
+# vanitygen launch script
+# KISS
+printf "vanitygen" | toilet -sf slant --gay
+printf "\n keep it simple \n\n" 
+cd ~/git/vanitygen-master
+sleep  1
+./vanitygen -vk -f ~/git/vanitygen-master/swisswatch -o ~/git/vanitygen-master/swisswatch-results -s /dev/random
+

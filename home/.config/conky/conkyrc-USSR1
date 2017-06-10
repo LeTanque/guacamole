@@ -1,0 +1,166 @@
+######################
+# - Conky settings - #
+######################
+cpu_avg_samples 1
+double_buffer true
+format_human_readable true
+imlib_cache_size 0
+net_avg_samples 1
+no_buffers false
+out_to_console false
+top_cpu_separate true
+total_run_times 0
+update_interval 0.87
+use_spacer left
+max_specials 999
+max_user_text 25000
+top_cpu_separate true
+if_up_strictness address
+
+#####################
+# - Window  Specs - #
+#####################
+## Alignment set with: tl, tr, tm, bl, br, bm, ml, mm, mr, none
+alignment br
+border_margin 0
+border_width 8
+default_bar_size 287 20
+background true
+own_window_class Conky
+own_window true
+own_window_colour 010101
+own_window_type desktop
+own_window_transparent false
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual true
+own_window_argb_value 33
+gap_x 10
+gap_y -65
+minimum_size 287 800
+maximum_width 287
+show_graph_range false
+show_graph_scale true
+short_units false
+
+#####################
+# - Graphics Sett - #
+#####################
+color0 171717	# very dark grey
+color1 3FBB9E	# aque teen blue
+color2 D5181C	# enflamed labia red
+color3 963ECD	# homofag purp
+color4 C91569	# vagina pink dark
+color5 4DCF57	# greeny
+color6 232323	# middle grey
+color7 DF1919	# crab killing red
+color8 272727	# grey
+color9 a0a0a0	# very dark grey
+default_color c0c0c0			# lighter shade of grey
+default_gauge_size 45 20
+default_shade_color 212121		# grey
+default_outline_color 000000	# cheap black
+draw_borders false
+draw_graph_borders true
+draw_outline false
+draw_shades false
+override_utf8_locale true
+stippled_borders 1
+uppercase false
+use_xft true
+xftfont inconsolata:size=8
+xftalpha false
+#☂
+################
+TEXT
+${voffset -12}${alignc 33}${color7}${font monospace:size=8}${exec acpi}${font}${color}
+${voffset 9}${color1}${time %l : %M %P}${color}     ${alignr}${color4}${time %A, %D}${color}
+${color6}${cpubar 20}${color}
+${voffset -31}${color1}${cpugraph cpu0 20,287 5990BE BF2828}${color}
+${voffset -55}${if_up tun0}${color7}${voffset 20}${goto 133}${font tahoma:size=50}${font}${color}${voffset -10}${else}${voffset 62}${endif}
+${voffset -20}CPU Usage:${alignr}${color4}${cpu}${color}%
+CPU Temp:${alignr}${color4}${acpitemp}${color} Degrees
+Uptime: ${alignr}${uptime_short}
+Load Average: ${alignr}${color5}${loadavg}${color}
+Battery: ${alignr}${color5}${acpiacadapter BAT1}${acpiacadapter ADP1}${battery 0}${battery 1}${color}
+${voffset -3}
+${color6}${font monospace:size=8}S D A 1  ${color}${voffset -3}${color8}${font}${stippled_hr}${color}
+${voffset -10}
+${color0}${diskiograph_read /dev/sda1 17,287 867B7D 45B29D}${color}
+${voffset -2}Disk Input${alignr}${color5}${diskio_read /dev/sda1}${color}
+${color0}${diskiograph_write /dev/sda1 17,287 867B7D 45B29D}${color}
+${voffset -2}Disk Output${alignr}${color5}${diskio_write /dev/sda1}${color}
+${voffset -1}
+${color6}${font monospace:size=8}W U R K  ${color}${voffset -3}${color8}${font}${stippled_hr}${color}
+${voffset -5}
+Processes: ${color5}${processes}${color}${alignr}Running: ${color5}${running_processes}${color}
+${voffset -1}${color8}${stippled_hr}${color}
+${font monospace:size=5}${color6}N A M E${goto 160}P I D${alignr 10}C P U %${alignr 1} M E M %${font}${color}
+${color6}${voffset -5}${hr}${color}${color5}
+${voffset -1}${top name 1} ${goto 160}${top pid 1}${alignr 10}${top cpu 1}${alignr 1}${top mem 1}${color}
+${voffset -1}${top name 2} ${goto 160}${top pid 2}${alignr 10}${top cpu 2}${alignr 1}${top mem 2}
+${voffset -1}${top name 3} ${goto 160}${top pid 3}${alignr 10}${top cpu 3}${alignr 1}${top mem 3}
+${voffset -1}${top name 4} ${goto 160}${top pid 4}${alignr 10}${top cpu 4}${alignr 1}${top mem 4}
+${voffset -1}${top name 5} ${goto 160}${top pid 5}${alignr 10}${top cpu 5}${alignr 1}${top mem 5}
+${voffset -1}${top name 6} ${goto 160}${top pid 6}${alignr 10}${top cpu 6}${alignr 1}${top mem 6}
+${voffset -1}${top name 7} ${goto 160}${top pid 7}${alignr 10}${top cpu 7}${alignr 1}${top mem 7}
+${voffset -1}${top name 8} ${goto 160}${top pid 8}${alignr 10}${top cpu 8}${alignr 1}${top mem 8}
+${voffset -1}${top name 9} ${goto 160}${top pid 9}${alignr 10}${top cpu 9}${alignr 1}${top mem 9}
+${voffset 2}${color6}${entropy_bar 14,257}${color}
+${alignr 1}${voffset -19}${color5}${entropy_avail} enthropy avail${color}
+${voffset -15}
+${color6}${if_up tun0}${font monospace:size=8}${voffset 19}C O N N E C T I O N S ${color}${voffset -3}${color8}${font}${stippled_hr}${color}${else}${voffset 19}${color6}${font monospace:size=9}D I S C O N N E C T E D  ${color}${voffset -3}${color8}${font}${stippled_hr}${color}${endif}
+${voffset -6}
+loopback (lo) ${if_up lo}${alignr}${color3}${addr lo}${color}${else}${alignr}${color2}lo DOWN${color}${endif}
+${if_up eth0}Wired 1 (eth0) ${alignr}${color3}${addr eth0}${color}${else}${voffset -11}${endif}
+${if_up eth1}Wired 2 (eth1) ${alignr}${color3}${addr eth1}${color}${else}${voffset -11}${endif}
+${if_up wlan0}Wireless 1 (wlan0) ${alignr}${color9}${addr wlan0}${color}${else}${voffset -11}${endif}
+${if_up wlan1}Wireless 2 (wlan1) ${alignr}${color9}${addr wlan1}${color}${else}${voffset -11}${endif}
+${if_up wlan0}Internal Address (wlan0)${alignr}${color3}${addr wlan0}${color}${else}${voffset -11}${endif}
+${if_up wlan1}Internal Address (wlan1)${alignr}${color3}${addr wlan1}${color}${else}${voffset -11}${endif}
+${if_up wlan0}AP MAC (wlan0)${alignr}${color3}${wireless_ap wlan0}${color}${else}${voffset -11}${endif}
+${if_up wlan1}AP MAC (wlan1)${alignr}${color3}${wireless_ap wlan1}${color}${else}${voffset -11}${endif}
+${if_up wlan0}ESSID (wlan0)${alignr}${color9}${wireless_essid wlan0}${color}${else}${voffset -11}${endif}
+${if_up wlan1}ESSID (wlan1)${alignr}${color9}${wireless_essid wlan1}${color}${else}${voffset -11}${endif}
+${if_up wlan0}Quality:${alignr}${color3}${wireless_link_qual wlan0}${color}  of${wireless_link_qual_max wlan0}${else}${color2}${alignr}${voffset -11}${color}${endif}
+${if_up wlan1}Quality:${alignr}${color3}${wireless_link_qual wlan1}${color}  of${wireless_link_qual_max wlan1}${else}${color2}${alignr}${voffset -11}${color}${endif}
+${if_up eth0}Gateway (${gw_iface}) ${color3}${alignr}${gw_ip}${color}${else}${voffset -11}${endif}
+${if_up eth1}Gateway (${gw_iface}) ${color3}${alignr}${gw_ip}${color}${else}${voffset -11}${endif}
+VPN:${if_up tun0}${alignr}${color6}Connected! ${color}${color9}${addrs tun0}${color}${else}${color2}${alignr}VPN DOWN${color}${endif}
+${voffset 10}
+${if_up tun0}     ${alignr 22}${color9}${font monospace:size=8}tun0 up${font}${color}
+${voffset -21}${color0}${upspeedgraph tun0 22,287 5990BE BF2828}${color}
+${voffset -9}Up:${alignr}${color5}${upspeed tun0}${color}b/s Total:${totalup tun0}
+                  ${voffset 10}${alignr 22}${color6}${font monospace:size=8}tun0 down${font}${color}
+${voffset -22}${color0}${downspeedgraph tun0 22,287 BF2828 AAf77E}${color}
+${voffset -9}Down:${alignr}${color5}${downspeed tun0}${color}b/s Total:${totaldown tun0}${else}${voffset -10}${endif}
+${if_up wlan0}     ${alignr 22}${color9}${font monospace:size=8}wlan0 up${font}${color}
+${voffset -21}${color0}${upspeedgraph wlan0 22,287 5990BE BF2828}${color}
+${voffset -9}Up:${alignr}${color5}${upspeed wlan0}${color}b/s Total:${totalup wlan0}
+                  ${voffset 10}${alignr 22}${color6}${font monospace:size=8}wlan0 down${font}${color}
+${voffset -22}${color0}${downspeedgraph wlan0 22,287 BF2828 AAf77E}${color}
+${voffset -9}Down:${alignr}${color5}${downspeed wlan0}${color}b/s Total:${totaldown wlan0}${else}${voffset -10}${endif}
+${if_up wlan1}     ${alignr 22}${color9}${font monospace:size=8}wlan1 up${font}${color}
+${voffset -21}${color0}${upspeedgraph wlan1 22,287 5990BE BF2828}${color}
+${voffset -9}Up:${alignr}${color5}${upspeed wlan1}${color}b/s Total:${totalup wlan1}
+                  ${voffset 10}${alignr 22}${color6}${font monospace:size=8}wlan1 down${font}${color}
+${voffset -22}${color0}${downspeedgraph wlan1 22,287 BF2828 AAf77E}${color}
+${voffset -9}Down:${alignr}${color5}${downspeed wlan1}${color}b/s Total:${totaldown wlan1}${else}${voffset -10}${endif}
+${if_up wlan4}     ${alignr 22}${color9}${font monospace:size=8}wlan4 up${font}${color}
+${voffset -21}${color0}${upspeedgraph wlan4 22,287 5990BE BF2828}${color}
+${voffset -9}Up:${alignr}${color5}${upspeed wlan4}${color}b/s Total:${totalup wlan4}
+                  ${voffset 10}${alignr 22}${color6}${font monospace:size=8}wlan4 down${font}${color}
+${voffset -22}${color0}${downspeedgraph wla257n4 22,287 BF2828 AAf77E}${color}
+${voffset -9}Down:${alignr}${color5}${downspeed wlan4}${color}b/s Total:${totaldown wlan4}${else}${voffset -10}${endif}
+${if_up eth1}      ${alignr 22}${color9}${font monospace:size=8}eth1 up${font}${color}
+${voffset -21}${color0}${upspeedgraph eth1 22,287 5990BE BF2828}${color}
+${voffset -9}Up:${alignr}${color5}${upspeed eth1}${color}b/s Total:${totalup eth1}
+                  ${voffset 10}${alignr 22}${color6}${font monospace:size=8}eth1 down${font}${color}
+${voffset -22}${color0}${downspeedgraph eth1 22,287 BF2828 AAf77E}${color}
+${voffset -9}Down:${alignr}${color5}${downspeed eth1}${color}b/s Total:${totaldown eth1}${else}${voffset -10}${endif}
+${if_up eth0}      ${alignr 22}${color9}${font monospace:size=8}eth0 up${font}${color}
+${voffset -21}${color0}${upspeedgraph eth0 22,287 5990BE BF2828}${color}
+${voffset -9}Up:${alignr}${color5}${upspeed eth0}${color}b/s Total:${totalup eth0}
+                  ${voffset 10}${alignr 22}${color6}${font monospace:size=8}eth0 down${font}${color}
+${voffset -22}${color0}${downspeedgraph eth0 22,287 BF2828 AAf77E}${color}
+${voffset -9}Down:${alignr}${color5}${downspeed eth0}${color}b/s Total:${totaldown eth0}${else}${voffset -10}${endif}
+${if_up tun0}${image /home/tank/.icons/png/skullcrossbone-tor-grey.png -p 80,52 -s 48x48} ${else}${image /home/tank/.icons/png/skullcrossbone-tor-black.png -p 80,52 -s 48x48} ${endif}
