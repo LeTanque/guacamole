@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# Script that makes some essential directories and modifys bash to my liking
 #rm -rf ~/.bashrc ~/.profile
 #cp .bashrc ~/.bashrc
 #cp .profile ~/.profile
@@ -156,6 +156,7 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 # some more ls aliases
 alias ll='ls -hal'
+alias lol='ls -hal'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -185,7 +186,13 @@ __BASHRC__
 ############################################
 fi
 
-
+############################################
+# .config, Downloads, bin folders populate
+############################################
+cp .config/* ~/.config -R
+cp bin/* ~/bin/
+cp Downloads/* ~/Downloads -R
+############################################
 printf ".bashrc written \n\n" 
 sleep 1
-printf "\nOMFG \n"
+printf "\nOMFG I HOPE NOTHING BROKE\n"
