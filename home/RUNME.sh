@@ -192,15 +192,12 @@ fi
 # .config, Downloads, bin folders populate
 ############################################
 printf "Populate .config, Downloads and bin \n\n" && sleep 1
-confirm && if 
-then
-    printf "foofoo \n\n"
-else
+
 cp .config/* ~/.config -R
 cp bin/* ~/bin/
 cp Downloads/* ~/Downloads -R
 
-fi
+
 ############################################
 printf ".bashrc written \n\n" 
 sleep 1
