@@ -22,6 +22,7 @@ confirm () {
 printf "handyman \n" && sleep 1
 printf "making some home directories if they don't already exist \n" && sleep 0.5
 mkdir -v ~/bin
+mkdir -v ~/.config
 mkdir -v ~/.config/conky
 mkdir -v ~/etc
 mkdir -v ~/Downloads
