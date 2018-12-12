@@ -50,7 +50,6 @@ fi
 
 
 # some more ls aliases
-alias lol='ls -hal'
 alias ll='ls -hal'
 alias la='ls -A'
 alias l='ls -CF'
@@ -79,4 +78,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
