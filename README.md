@@ -7,4 +7,4 @@ basic elements.
 
 Some icons.
 
-ngrok and telegram in Downloads.
+ngrok in Downloads.
