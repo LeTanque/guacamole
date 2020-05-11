@@ -3,6 +3,7 @@
 - install oh-my-zsh
 - install homebrew
 - install fonts
+- install neofetch
 - zsh terminal
 - iterm profile
 
@@ -37,5 +38,9 @@ macOS
 - Follow the instructions from your operating system.
 - Enjoy!
 
+## Neofetch
 
+```zsh
+brew install neofetch
+```
 

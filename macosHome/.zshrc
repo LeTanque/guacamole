@@ -123,3 +123,4 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 export NVM_DIR=~/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+neofetch
