@@ -1,11 +1,22 @@
-# Configuring macos 
+# Getting started on MacOS
 
+- add ssh key
 - install oh-my-zsh
 - install homebrew
 - install fonts
 - install neofetch
-- zsh terminal
-- iterm profile
+- apply iterm profile
+- install node
+
+## Adding ssh key
+
+After the keys are added to the .ssh folder, make sure to chmod them to 700. Then add them to the agent
+
+```bash
+ssh-add -K .ssh/id_rsa
+```
+
+Now you can push and pull.
 
 ## Install oh-my-zsh
 
@@ -19,7 +30,9 @@ sh -c “$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
-## Fonts
+## Hack nerd Fonts
+
+These are the fonts used in the zsh/iterm theme
 
 ```zsh
 brew tap sambadevi/powerlevel9k
@@ -28,7 +41,9 @@ brew tap homebrew/cask-fonts
 brew cask install font-hack-nerd-font
 ```
 
-## Hack font, which is not used in the theme
+## Hack font
+
+Not used in the theme
 
 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack
 
@@ -42,5 +57,16 @@ macOS
 
 ```zsh
 brew install neofetch
+```
+
+## Node
+
+Npm comes with node, in case you forgot.
+
+[nodejs.org](https://nodejs.org/en/)
+
+```bash
+	•	Node.js v12.16.3 to /usr/local/bin/node
+	•	npm v6.14.4 to /usr/local/bin/npm
 ```
 
