@@ -5,6 +5,7 @@
 - install homebrew
 - install fonts
 - install neofetch
+- install lsd
 - apply iterm profile
 - install node
 
@@ -57,6 +58,12 @@ macOS
 
 ```zsh
 brew install neofetch
+```
+
+## LSD
+
+```zsh
+brew install lsd
 ```
 
 ## Node
