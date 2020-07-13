@@ -1,6 +1,7 @@
 # Getting started on MacOS
 
 - add ssh key
+- install yarn
 - install oh-my-zsh
 - install homebrew
 - install fonts
@@ -18,6 +19,12 @@ ssh-add -K .ssh/id_rsa
 ```
 
 Now you can push and pull.
+
+## Install Yarn
+
+```zsh
+brew install yarn
+```
 
 ## Install oh-my-zsh
 
@@ -60,10 +67,14 @@ macOS
 brew install neofetch
 ```
 
-## LSD
+## Terminal tools
 
 ```zsh
 brew install lsd
+brew install arp-scan
+brew install figlet
+brew cask install xquartz
+brew install toilet
 ```
 
 ## Node
@@ -77,3 +88,6 @@ Npm comes with node, in case you forgot.
 	•	npm v6.14.4 to /usr/local/bin/npm
 ```
 
+## TODO
+
+- Make this all into an autoscript
