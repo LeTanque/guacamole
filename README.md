@@ -1,4 +1,4 @@
-# guacamole-0.1
+# guacamole
 * Guacamole 0.3.1 Basics
 
 Collection of scripts, configuration files, and other stuff to get new systems building, testing, inspecting, and developing faster. Designed
