@@ -22,10 +22,6 @@ confirm () {
 printf "handyman \n" && sleep 1
 printf "making some home directories if they don't already exist \n" && sleep 0.5
 mkdir -v ~/bin
-mkdir -v ~/.config
-mkdir -v ~/.config/conky
-mkdir -v ~/etc
-mkdir -v ~/Downloads
 sleep 2
 
 ############################################
@@ -127,16 +123,16 @@ if [ -n "\$force_color_prompt" ]; then
 fi
 
 if [ "\$color_prompt" = yes ]; then
-    PS1='\${debian_chroot:+(\$debian_chroot)}\[\033[01;33m\]\u@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='\${debian_chroot:+(\$debian_chroot)}\[\033[01;31m\]\u \[\033[0;32m\]@\[\033[03;33m\]\h\[\033[00m\] \[\033[0;32m\]\w\[\033[00m\] \$ '
 else
-    PS1='\${debian_chroot:+(\$debian_chroot)}\u@\h:\w\$ '
+    PS1='\${debian_chroot:+(\$debian_chroot)}\u @ \h: \w \$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "\$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;\${debian_chroot:+(\$debian_chroot)}\u@\h: \w\a\]\$PS1"
+    PS1="\[\e]0;\${debian_chroot:+(\$debian_chroot)}\u @ \h: \w\a\]\$PS1"
     ;;
 *)
     ;;
@@ -145,7 +141,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "\$(dircolors -b ~/.dircolors)" || eval "\$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='lsd --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
@@ -157,18 +153,16 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 # some more ls aliases
-alias ll='ls -hal'
-alias lol='ls -hal'
-alias la='ls -A'
+alias ll='lsd -hal'
+# sort by size in reverse
+alias lsl='lsd -halSr'
+alias lol='lsd -ha'
+alias la='lsd -A'
 alias l='ls -CF'
+alias sudo='fucking'
 
 # equal opportunity manual
 alias woman='man'
-
-# Alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -181,7 +175,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+source "$HOME/.cargo/env"
 
+export PATH=$HOME/.cargo/bin:$PATH
 
 __BASHRC__
 
@@ -189,16 +185,12 @@ fi
 ############################################
 
 ############################################
-# .config, Downloads, bin folders populate
+# bin folders populate
 ############################################
-printf "Populate .config, Downloads and bin \n\n" && sleep 1
-
-cp .config/* ~/.config -R
 cp bin/* ~/bin/
-cp Downloads/* ~/Downloads -R
 
 
 ############################################
 printf ".bashrc written \n\n" 
-sleep 1
-printf "\nOMFG I HOPE NOTHING BROKE\n"
+
+printf "\nHello tank!\n"
