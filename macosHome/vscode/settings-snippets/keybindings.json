@@ -1,0 +1,5 @@
+// Place your key bindings in this file to override the defaults
+[
+  { "key": "cmd+e",                 "command": "workbench.action.toggleSidebarVisibility" },
+  { "key": "cmd+r",                 "command": "editor.action.toggleMinimap" },
+]

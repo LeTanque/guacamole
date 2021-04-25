@@ -1,0 +1,132 @@
+{
+    "material-icon-theme.folders.theme": "specific",
+    "git.path": "/usr/bin/git",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.fontSize": 11,
+    "todohighlight.isEnable": true,
+    "todohighlight.include": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.html",
+        "**/*.php",
+        "**/*.css",
+        "**/*.scss"
+    ],
+    "todohighlight.exclude": [
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/dist/**",
+        "**/build/**",
+        "**/.vscode/**",
+        "**/.github/**",
+        "**/_output/**",
+        "**/*.min.*",
+        "**/*.map",
+        "**/.next/**"
+    ],
+    "todohighlight.isCaseSensitive": false,
+    "todohighlight.maxFilesForSearch": 3333,
+    "todohighlight.defaultStyle": {
+        "backgroundColor": "rgba(24, 221, 193, 0.1)",
+        "color": "rgba(24, 221, 193, 0.9)",
+        "overviewRulerColor": "red",
+        "borderRadius": "0px",
+    },
+    "todohighlight.keywords": [
+        "// ",
+        "/* ",
+        "*/ ",
+        "<!-- ",
+        " ->",
+        {
+            "text": "let logStyle = ['background: linear-gradient(to right, transparent, #ffc70055)','color: white','font-weight: bold'].join(';');", 
+            "backgroundColor": "rgba(11, 21, 21, 0.66)",
+            "color": "rgba(175, 255, 111, 0.5)",
+        },
+        {
+            "text": "console.", 
+            "backgroundColor": "rgba(55, 221, 193, 0.5)",
+            "color": "black",
+            "overviewRulerColor": "red",
+            "borderRadius": "0px 0 0 0px",
+        },
+        {
+            "text": "log( ", 
+            "backgroundColor": "rgba(24, 221, 193, 0.5)",
+            "color": "white",
+            "overviewRulerColor": "orange",
+            "borderRadius": "0 6px 6px 0",
+        },
+        {
+            "text": "trace", 
+            "backgroundColor": "rgba(24, 221, 193, 0.25)",
+            "color": "white",
+            "overviewRulerColor": "yello",
+            "borderRadius": "0 6px 6px 0",
+        },
+        {
+            "text": "  // 🆇  ",
+            "backgroundColor": "rgba(24, 221, 193, 0)",
+            "color": "#ffc700",
+            "overviewRulerColor": "#ffc700",
+            "borderRadius": "4px",
+        },
+    ],
+    "explorer.confirmDragAndDrop": true,
+    "explorer.confirmDelete": false,
+    "explorer.incrementalNaming": "smart",
+    "explorer.openEditors.visible": 0,
+    "explorer.compactFolders": false,
+
+    "workbench.sideBar.location": "left",
+    "workbench.editor.openSideBySideDirection": "down",
+    "workbench.panel.defaultLocation": "bottom",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.settings.editor": "json",
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#00cd6e",
+        "statusBar.foreground": "#053755",
+        "editor.lineHighlightBackground": "#171717"
+    },
+
+    "editor.tabSize": 2,
+    "editor.minimap.scale": 1,
+    "editor.minimap.enabled": false,
+    "editor.minimap.showSlider": "mouseover",
+    "editor.showFoldingControls": "always",
+    "editor.roundedSelection": false,
+    "editor.lineNumbers": "on",
+    "editor.maxTokenizationLineLength": 25000,
+    "editor.mouseWheelZoom": true,
+    
+    "zenMode.centerLayout": false,
+
+    "outline.showPackages": true,
+
+    "window.zoomLevel": 0,
+    "window.titleBarStyle": "native",
+
+    "customizeUI.activityBar": "bottom",
+    "customizeUI.titleBar": "inline",
+    "customizeUI.fontSizeMap": {
+        "9px": "9px",       // <!-- Unknown
+        "10px": "12px",     // <!-- The little arrows next to folders
+        "11px": "10px",     // <!-- Titles above ui sections, like explorer
+        "12px": "12px",     // <!-- UI font for popups
+        "13px": "13px",      // <!-- Sidebar "explorer" font
+        "15px": "15px",     // <!-- Not sure what this affects
+        "tab-title": "11px", // <!-- Tab bar at top
+        "monospace": "11px",// <!-- Didn't seem to have an effect; maybe because custom font?
+    },
+
+    "telemetry.enableTelemetry": false,
+    
+    "keyboard.touchbar.enabled": true,
+    "customizeUI.font.monospace": "Hack Nerd Font Mono",
+    "customizeUI.font.regular": "Helvetica",
+}

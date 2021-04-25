@@ -1,0 +1,25 @@
+{
+	"Create new component": {
+		"scope": "jsx,javascriptreact,react",
+		"prefix": "imprftsx",
+		"body": [
+			"import React from 'react';",
+			"",
+			"interface Props {",
+			"  open: boolean;",
+			"}",
+			"",
+			"const $1 = ({ open }: Props) => {",
+			"",
+			"  return (",
+			"    <>",
+			"      ",
+			"    </>",
+			"  );",
+			"};",
+			"",
+			"export default $1;",
+			""
+		]
+	}
+}

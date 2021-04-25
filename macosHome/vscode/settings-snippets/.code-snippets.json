@@ -1,0 +1,24 @@
+{
+	"It" : {
+		"scope": "javascript,typescript",
+		"prefix": "itas",
+		"body": [
+			"it(\"$1\", () => {",
+			"  $0",
+			"})"
+		],
+		"description": "It template"
+	},
+	"Describe it" : {
+		"scope": "javascript,typescript",
+		"prefix": "describeit",
+		"body": [
+			"describe(\"$1\", () => {",
+			"  it(\"$2\", () => {",
+			"    $0",
+			"  })",
+			"})"
+		],
+		"description": "Describe it template"
+	}
+}
